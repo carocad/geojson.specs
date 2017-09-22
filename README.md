@@ -1,10 +1,10 @@
-# geojson.specs [![Build Status](https://travis-ci.org/n7a235/geojson.specs.svg?branch=master)](https://travis-ci.org/n7a235/geojson.specs)
+# geojson.specs [![Build Status](https://travis-ci.org/hiposfer/geojson.specs.svg?branch=master)](https://travis-ci.org/hiposfer/geojson.specs)
 
 a Geojson utility for validating data using Clojure's spec following RFC 7946.
 
 ```clojure
 (ns example
-  (:require [n7a235.geojson.specs :as geojson]))
+  (:require [hiposfer.geojson.specs :as geojson]))
             [clojure.spec.alpha :as s] 
 
 (s/valid? ::geojson/point {:type "Point" :coordinates [1 2 3]})
@@ -13,7 +13,7 @@ a Geojson utility for validating data using Clojure's spec following RFC 7946.
                                                                  [4 5 6]]})
 ```
 
-The `n7a235.geojson.specs` namespace also contains some utility functions for
+The `hiposfer.geojson.specs` namespace also contains some utility functions for
 working with geojson. Currently those are:
 - `limited-feature`: creates a spec that only allows geojson features of the specified type.
     For example: `(geojson/limited-feature ::geojson/point)`
