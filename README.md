@@ -1,6 +1,6 @@
 # geojson.specs [![Build Status](https://travis-ci.org/n7a235/geojson.specs.svg?branch=master)](https://travis-ci.org/n7a235/geojson.specs)
 
-a Geojson spec for validating data using Clojure's spec following RFC 7946.
+a Geojson utility for validating data using Clojure's spec following RFC 7946.
 
 ```clojure
 (ns example

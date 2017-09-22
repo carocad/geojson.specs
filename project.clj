@@ -1,4 +1,4 @@
-(defproject geojson.specs "0.1.0"
+(defproject n7a235/geojson.specs "0.1.0"
   :description "a Geojson spec for validating data using Clojure's spec"
   :url "git@github.com:n7a235/geojson.specs"
   :license {:name "GNU LESSER GENERAL PUBLIC LICENSE"
