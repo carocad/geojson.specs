@@ -1,4 +1,4 @@
-(ns n7a235.geojson.specs
+(ns hiposfer.geojson.specs
   "GeoJSON as Clojure Spec
    https://tools.ietf.org/html/rfc7946"
   (:require [clojure.spec.alpha :as s]
@@ -18,52 +18,52 @@
 ;; https://groups.google.com/forum/#!topic/clojure-dev/eNN8NYj3CaA
 ;; the followind declarations should NOT be used in a normal workflow
 ;; so I think it is ok for them to be ugly here and not leak to the outside
-(s/def :n7a235.geojson.specs.point/type               #(= "Point" %))
-(s/def :n7a235.geojson.specs.multipoint/type          #(= "MultiPoint" %))
-(s/def :n7a235.geojson.specs.linestring/type          #(= "LineString" %))
-(s/def :n7a235.geojson.specs.multiline/type           #(= "MultiLineString" %))
-(s/def :n7a235.geojson.specs.polygon/type             #(= "Polygon" %))
-(s/def :n7a235.geojson.specs.multipolygon/type        #(= "MultiPolygon" %))
-(s/def :n7a235.geojson.specs.geometry-collection/type #(= "GeometryCollection" %))
-(s/def :n7a235.geojson.specs.feature/type             #(= "Feature" %))
-(s/def :n7a235.geojson.specs.feature-collection/type  #(= "FeatureCollection" %))
+(s/def :hiposfer.geojson.specs.point/type               #(= "Point" %))
+(s/def :hiposfer.geojson.specs.multipoint/type          #(= "MultiPoint" %))
+(s/def :hiposfer.geojson.specs.linestring/type          #(= "LineString" %))
+(s/def :hiposfer.geojson.specs.multiline/type           #(= "MultiLineString" %))
+(s/def :hiposfer.geojson.specs.polygon/type             #(= "Polygon" %))
+(s/def :hiposfer.geojson.specs.multipolygon/type        #(= "MultiPolygon" %))
+(s/def :hiposfer.geojson.specs.geometry-collection/type #(= "GeometryCollection" %))
+(s/def :hiposfer.geojson.specs.feature/type             #(= "Feature" %))
+(s/def :hiposfer.geojson.specs.feature-collection/type  #(= "FeatureCollection" %))
 
-(s/def :n7a235.geojson.specs.point/coordinates        ::position)
-(s/def :n7a235.geojson.specs.multipoint/coordinates   (s/coll-of ::position))
-(s/def :n7a235.geojson.specs.linestring/coordinates   (s/coll-of ::position :min-count 2))
-(s/def :n7a235.geojson.specs.multiline/coordinates    (s/coll-of :n7a235.geojson.specs.linestring/coordinates))
-(s/def :n7a235.geojson.specs.polygon/coordinates      (s/coll-of ::linear-ring))
-(s/def :n7a235.geojson.specs.multipolygon/coordinates (s/coll-of :n7a235.geojson.specs.polygon/coordinates))
+(s/def :hiposfer.geojson.specs.point/coordinates        ::position)
+(s/def :hiposfer.geojson.specs.multipoint/coordinates   (s/coll-of ::position))
+(s/def :hiposfer.geojson.specs.linestring/coordinates   (s/coll-of ::position :min-count 2))
+(s/def :hiposfer.geojson.specs.multiline/coordinates    (s/coll-of :hiposfer.geojson.specs.linestring/coordinates))
+(s/def :hiposfer.geojson.specs.polygon/coordinates      (s/coll-of ::linear-ring))
+(s/def :hiposfer.geojson.specs.multipolygon/coordinates (s/coll-of :hiposfer.geojson.specs.polygon/coordinates))
 
 ;; --------------- geometry objects
 (s/def ::point
-  (s/keys :req-un [:n7a235.geojson.specs.point/type
-                   :n7a235.geojson.specs.point/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.point/type
+                   :hiposfer.geojson.specs.point/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multipoint
-  (s/keys :req-un [:n7a235.geojson.specs.multipoint/type
-                   :n7a235.geojson.specs.multipoint/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.multipoint/type
+                   :hiposfer.geojson.specs.multipoint/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::linestring
-  (s/keys :req-un [:n7a235.geojson.specs.linestring/type
-                   :n7a235.geojson.specs.linestring/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.linestring/type
+                   :hiposfer.geojson.specs.linestring/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multiline
-  (s/keys :req-un [:n7a235.geojson.specs.multiline/type
-                   :n7a235.geojson.specs.multiline/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.multiline/type
+                   :hiposfer.geojson.specs.multiline/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::polygon
-  (s/keys :req-un [:n7a235.geojson.specs.polygon/type
-                   :n7a235.geojson.specs.polygon/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.polygon/type
+                   :hiposfer.geojson.specs.polygon/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multipolygon
-  (s/keys :req-un [:n7a235.geojson.specs.multipolygon/type
-                   :n7a235.geojson.specs.multipolygon/coordinates]
+  (s/keys :req-un [:hiposfer.geojson.specs.multipolygon/type
+                   :hiposfer.geojson.specs.multipolygon/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::object (s/or :point ::point
@@ -76,9 +76,9 @@
 
 ;TODO: FeatureCollection and Geometry objects, respectively
 ; MUST NOT contain a "geometry" or "properties" member.
-(s/def :n7a235.geojson.specs.geometry-collection/geometries   (s/coll-of ::object))
-(s/def :n7a235.geojson.specs.feature/geometry                 (s/nilable ::object))
-(s/def :n7a235.geojson.specs.feature-collection/features      (s/coll-of ::feature))
+(s/def :hiposfer.geojson.specs.geometry-collection/geometries   (s/coll-of ::object))
+(s/def :hiposfer.geojson.specs.feature/geometry                 (s/nilable ::object))
+(s/def :hiposfer.geojson.specs.feature-collection/features      (s/coll-of ::feature))
 
 (s/def :feature/id (s/or :string string? :number number?))
 
@@ -86,17 +86,17 @@
 ;; -------- features/collections
 
 (s/def ::geometry-collection
-  (s/keys :req-un [:n7a235.geojson.specs.geometry-collection/type
-                   :n7a235.geojson.specs.geometry-collection/geometries]))
+  (s/keys :req-un [:hiposfer.geojson.specs.geometry-collection/type
+                   :hiposfer.geojson.specs.geometry-collection/geometries]))
 
 (s/def ::feature
-  (s/keys :req-un [:n7a235.geojson.specs.feature/type
-                   :n7a235.geojson.specs.feature/geometry]
+  (s/keys :req-un [:hiposfer.geojson.specs.feature/type
+                   :hiposfer.geojson.specs.feature/geometry]
           :opt-un [:feature/id ::bbox]))
 
 (s/def ::feature-collection
-  (s/keys :req-un [:n7a235.geojson.specs.feature-collection/type
-                   :n7a235.geojson.specs.feature-collection/features]
+  (s/keys :req-un [:hiposfer.geojson.specs.feature-collection/type
+                   :hiposfer.geojson.specs.feature-collection/features]
           :opt-un [::bbox]))
 
 ;; -------------- utility functions
@@ -105,7 +105,7 @@
   "returns an feature spec that conforms only to the specified geometry type
   instead of any geometry object"
   [geo-spec]
-  (s/keys :req-un [:n7a235.geojson.specs.feature/type geo-spec]
+  (s/keys :req-un [:hiposfer.geojson.specs.feature/type geo-spec]
           :opt-un [:feature/id ::bbox]))
 
 (defn- bounds
