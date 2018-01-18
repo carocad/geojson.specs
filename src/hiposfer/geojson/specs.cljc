@@ -101,7 +101,22 @@
           :opt-un [::bbox]))
 
 ;; -------------- utility functions
-
+;; TODO: after much try and error I found out that it is not possible to
+;; have such function due to the way that Clojure spec works. However, there
+;; is an option to create it ... macros !!
+;; it should be possible to create a macro that will resolve the geometry required
+;; as a keyword and build an s/keys with it.
+;; There is another problem however. We need to register all posible geometries
+;; beforehand and decide on macro execution which one to take based on the user input
+;; probably something like this:
+;(defmacro foo [keyspec]
+;  (let [names {::geojson/linestring :line/geometry
+;               ::geojson/point :point/geometry}]
+;    (s/keys :req-un [:hiposfer.geojson.specs.feature/type
+;                     (names keyspec)])))
+;; however since I am not using the feature at the moment I havent tried it. If you
+;; want this feature and came to this point, please submit a PR so that we can all
+;; benefit from it :)
 (defn limited-feature
   "returns an feature spec that conforms only to the specified geometry type
   instead of any geometry object"
