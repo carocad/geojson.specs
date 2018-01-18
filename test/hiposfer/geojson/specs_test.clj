@@ -1,7 +1,8 @@
-(ns geojson.specs-test
-  (:require [clojure.test :refer :all]
-            [geojson.specs :refer :all]))
+(ns hiposfer.geojson.specs-test
+  (:require [clojure.test :as test]
+            [hiposfer.geojson.specs :as geojson]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+;; TODO
+(test/deftest a-test
+  (test/testing "FIXME, I fail."
+    (test/is (= 0 1))))

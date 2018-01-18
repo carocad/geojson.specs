@@ -1,7 +1,8 @@
 (ns hiposfer.geojson.specs
   "GeoJSON as Clojure Spec
    https://tools.ietf.org/html/rfc7946"
-  (:require [clojure.spec.alpha :as s]
+  (:require [#?(:clj  clojure.spec.alpha
+                :cljs cljs.spec.alpha) :as s]
             [clojure.string :as str]))
 
 (s/def ::lat (s/and number? #(<= -90 % 90)))
@@ -18,15 +19,15 @@
 ;; https://groups.google.com/forum/#!topic/clojure-dev/eNN8NYj3CaA
 ;; the followind declarations should NOT be used in a normal workflow
 ;; so I think it is ok for them to be ugly here and not leak to the outside
-(s/def :hiposfer.geojson.specs.point/type               #(= "Point" %))
-(s/def :hiposfer.geojson.specs.multipoint/type          #(= "MultiPoint" %))
-(s/def :hiposfer.geojson.specs.linestring/type          #(= "LineString" %))
-(s/def :hiposfer.geojson.specs.multiline/type           #(= "MultiLineString" %))
-(s/def :hiposfer.geojson.specs.polygon/type             #(= "Polygon" %))
-(s/def :hiposfer.geojson.specs.multipolygon/type        #(= "MultiPolygon" %))
-(s/def :hiposfer.geojson.specs.geometry-collection/type #(= "GeometryCollection" %))
-(s/def :hiposfer.geojson.specs.feature/type             #(= "Feature" %))
-(s/def :hiposfer.geojson.specs.feature-collection/type  #(= "FeatureCollection" %))
+(s/def :hiposfer.geojson.specs.point/type               #{"Point"})
+(s/def :hiposfer.geojson.specs.multipoint/type          #{"MultiPoint"})
+(s/def :hiposfer.geojson.specs.linestring/type          #{"LineString"})
+(s/def :hiposfer.geojson.specs.multiline/type           #{"MultiLineString"})
+(s/def :hiposfer.geojson.specs.polygon/type             #{"Polygon"})
+(s/def :hiposfer.geojson.specs.multipolygon/type        #{"MultiPolygon"})
+(s/def :hiposfer.geojson.specs.geometry-collection/type #{"GeometryCollection"})
+(s/def :hiposfer.geojson.specs.feature/type             #{"Feature"})
+(s/def :hiposfer.geojson.specs.feature-collection/type  #{"FeatureCollection"})
 
 (s/def :hiposfer.geojson.specs.point/coordinates        ::position)
 (s/def :hiposfer.geojson.specs.multipoint/coordinates   (s/coll-of ::position))
@@ -155,11 +156,6 @@
 ;                   :geometry {:type "Point" :coordinates [1 2]}}
 ;                  {:type "Feature"
 ;                   :geometry {:type "Point" :coordinates [3 4]}}]})
-
-;; Point is not supported
-;; TODO: I think the bbox implementation of GeometryCollection and FeatureCollection might be wrong.
-;; it should take into account single points as well. Probably it would be better to compute the bbox
-;; of the other elements and then expand the bbox if necessary to include the points
 
 (defn uri
   "takes a point or feature and concatenates the coordinates as {longitude},{latitude}"
