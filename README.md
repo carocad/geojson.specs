@@ -1,7 +1,7 @@
 # geojson.specs [![Build Status](https://travis-ci.org/hiposfer/geojson.specs.svg?branch=master)](https://travis-ci.org/hiposfer/geojson.specs) [![Clojars Project](https://img.shields.io/clojars/v/hiposfer/geojson.specs.svg)](https://clojars.org/hiposfer/geojson.specs)
 
 
-a Geojson utility for validating data using Clojure's spec following RFC 7946.
+a Geojson utility for validating data using Clojure(script)'s spec following RFC 7946.
 
 ```clojure
 (ns example
