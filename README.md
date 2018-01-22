@@ -16,8 +16,8 @@ a Geojson utility for validating data using Clojure(script)'s spec following RFC
 
 The `hiposfer.geojson.specs` namespace also contains some utility functions for
 working with geojson. Currently those are:
-- `limited-feature`: creates a spec that only allows geojson features of the specified type.
-    For example: `(geojson/limited-feature ::geojson/point)`
+- ~~`limited-feature`~~: creates a spec that only allows geojson features of the specified type.
+    For example: `(geojson/limited-feature ::geojson/point)`. **help wanted**. See [issue](https://github.com/hiposfer/geojson.specs/issues/8)
 - `bbox`: get or compute (if not available) the bounding box of a geojson object.
     Throws on `"Point"` without bbox
 - `uri`: takes a point (or feature-point) and returns a `lon,lat,height` string.
