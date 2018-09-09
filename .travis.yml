@@ -9,10 +9,4 @@ script:
   - lein clean
   - lein compile
   - lein check
-  - lein cljsbuild once
-#TODO  - lein eastwood '{:exclude-namespaces [service.routing.graph.specs service.routing.spec]}'
-#TODO  - lein test
-notifications:
-  email:
-    on_success: change # default: change
-    on_failure: always # default: always
+  - lein eastwood
