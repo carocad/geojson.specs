@@ -7,7 +7,7 @@
                  [org.clojure/clojurescript "1.10.597" :scope "provided"]]
   :profiles {:dev {:dependencies [[org.clojure/test.check "0.10.0"]  ;; generative testing
                                   [org.clojure/data.json "0.2.6"]]
-                   :plugins [[jonase/eastwood "0.2.9"]]
+                   :plugins [[jonase/eastwood "0.3.5"]]
                    :eastwood {:config-files ["resources/eastwood.clj"]}}}
 
   ;; deploy to clojars as - lein deploy releases
