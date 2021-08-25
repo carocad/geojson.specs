@@ -16,8 +16,7 @@ jobs:
     - stage: tests
       name: Java tests
       script:
-        - lein do clean, compile, check, eastwood
-        - lein trampoline test
+        - lein do clean, compile, check, eastwood, test
 
     - stage: Release
       if: tag IS present
