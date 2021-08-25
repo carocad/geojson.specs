@@ -1,6 +1,6 @@
 
-# avoids building a PR twice, once for a branch and another due to the PR status
-# see: https://github.com/travis-ci/travis-ci/issues/1147#issuecomment-160820262
+# build PRs to master and git tags
+# https://github.com/travis-ci/travis-ci/issues/1147#issuecomment-160820262
 branches:
   only:
     - master
