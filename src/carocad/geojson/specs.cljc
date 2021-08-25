@@ -154,11 +154,6 @@
       "Feature" (when (some? (:geometry geojson))
                   (bbox (:geometry geojson)))
       "FeatureCollection" (geometries-bbox (map :geometry (:features geojson))))))
-;(bbox {:type "FeatureCollection"
-;       :features [{:type "Feature"
-;                   :geometry {:type "Point" :coordinates [1 2]}}
-;                  {:type "Feature"
-;                   :geometry {:type "Point" :coordinates [3 4]}}]})
 
 (defn uri
   "takes a point or feature and concatenates the coordinates as {longitude},{latitude}"
