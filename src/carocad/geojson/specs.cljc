@@ -19,52 +19,52 @@
 ;; https://groups.google.com/forum/#!topic/clojure-dev/eNN8NYj3CaA
 ;; the following declarations should NOT be used in a normal workflow
 ;; so I think it is ok for them to be ugly here and not leak to the outside
-(s/def :net.clojars.carocad.geojson.specs.point/type #{"Point"})
-(s/def :net.clojars.carocad.geojson.specs.multipoint/type #{"MultiPoint"})
-(s/def :net.clojars.carocad.geojson.specs.linestring/type #{"LineString"})
-(s/def :net.clojars.carocad.geojson.specs.multiline/type #{"MultiLineString"})
-(s/def :net.clojars.carocad.geojson.specs.polygon/type #{"Polygon"})
-(s/def :net.clojars.carocad.geojson.specs.multipolygon/type #{"MultiPolygon"})
-(s/def :net.clojars.carocad.geojson.specs.geometry-collection/type #{"GeometryCollection"})
-(s/def :net.clojars.carocad.geojson.specs.feature/type #{"Feature"})
-(s/def :net.clojars.carocad.geojson.specs.feature-collection/type #{"FeatureCollection"})
+(s/def :carocad.geojson.specs.point/type #{"Point"})
+(s/def :carocad.geojson.specs.multipoint/type #{"MultiPoint"})
+(s/def :carocad.geojson.specs.linestring/type #{"LineString"})
+(s/def :carocad.geojson.specs.multiline/type #{"MultiLineString"})
+(s/def :carocad.geojson.specs.polygon/type #{"Polygon"})
+(s/def :carocad.geojson.specs.multipolygon/type #{"MultiPolygon"})
+(s/def :carocad.geojson.specs.geometry-collection/type #{"GeometryCollection"})
+(s/def :carocad.geojson.specs.feature/type #{"Feature"})
+(s/def :carocad.geojson.specs.feature-collection/type #{"FeatureCollection"})
 
-(s/def :net.clojars.carocad.geojson.specs.point/coordinates ::position)
-(s/def :net.clojars.carocad.geojson.specs.multipoint/coordinates (s/coll-of ::position))
-(s/def :net.clojars.carocad.geojson.specs.linestring/coordinates (s/coll-of ::position :min-count 2))
-(s/def :net.clojars.carocad.geojson.specs.multiline/coordinates (s/coll-of :net.clojars.carocad.geojson.specs.linestring/coordinates))
-(s/def :net.clojars.carocad.geojson.specs.polygon/coordinates (s/coll-of ::linear-ring))
-(s/def :net.clojars.carocad.geojson.specs.multipolygon/coordinates (s/coll-of :net.clojars.carocad.geojson.specs.polygon/coordinates))
+(s/def :carocad.geojson.specs.point/coordinates ::position)
+(s/def :carocad.geojson.specs.multipoint/coordinates (s/coll-of ::position))
+(s/def :carocad.geojson.specs.linestring/coordinates (s/coll-of ::position :min-count 2))
+(s/def :carocad.geojson.specs.multiline/coordinates (s/coll-of :carocad.geojson.specs.linestring/coordinates))
+(s/def :carocad.geojson.specs.polygon/coordinates (s/coll-of ::linear-ring))
+(s/def :carocad.geojson.specs.multipolygon/coordinates (s/coll-of :carocad.geojson.specs.polygon/coordinates))
 
 ;; --------------- geometry objects
 (s/def ::point
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.point/type
-                   :net.clojars.carocad.geojson.specs.point/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.point/type
+                   :carocad.geojson.specs.point/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multipoint
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.multipoint/type
-                   :net.clojars.carocad.geojson.specs.multipoint/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.multipoint/type
+                   :carocad.geojson.specs.multipoint/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::linestring
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.linestring/type
-                   :net.clojars.carocad.geojson.specs.linestring/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.linestring/type
+                   :carocad.geojson.specs.linestring/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multiline
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.multiline/type
-                   :net.clojars.carocad.geojson.specs.multiline/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.multiline/type
+                   :carocad.geojson.specs.multiline/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::polygon
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.polygon/type
-                   :net.clojars.carocad.geojson.specs.polygon/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.polygon/type
+                   :carocad.geojson.specs.polygon/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::multipolygon
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.multipolygon/type
-                   :net.clojars.carocad.geojson.specs.multipolygon/coordinates]
+  (s/keys :req-un [:carocad.geojson.specs.multipolygon/type
+                   :carocad.geojson.specs.multipolygon/coordinates]
           :opt-un [::bbox]))
 
 (s/def ::object (s/or :point ::point
@@ -77,9 +77,9 @@
 
 ;TODO: FeatureCollection and Geometry objects, respectively
 ; MUST NOT contain a "geometry" or "properties" member.
-(s/def :net.clojars.carocad.geojson.specs.geometry-collection/geometries (s/coll-of ::object))
-(s/def :net.clojars.carocad.geojson.specs.feature/geometry (s/nilable ::object))
-(s/def :net.clojars.carocad.geojson.specs.feature-collection/features (s/coll-of ::feature))
+(s/def :carocad.geojson.specs.geometry-collection/geometries (s/coll-of ::object))
+(s/def :carocad.geojson.specs.feature/geometry (s/nilable ::object))
+(s/def :carocad.geojson.specs.feature-collection/features (s/coll-of ::feature))
 
 (s/def ::id (s/or :string string? :number number?))
 
@@ -87,17 +87,17 @@
 ;; -------- features/collections
 
 (s/def ::geometry-collection
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.geometry-collection/type
-                   :net.clojars.carocad.geojson.specs.geometry-collection/geometries]))
+  (s/keys :req-un [:carocad.geojson.specs.geometry-collection/type
+                   :carocad.geojson.specs.geometry-collection/geometries]))
 
 (s/def ::feature
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.feature/type
-                   :net.clojars.carocad.geojson.specs.feature/geometry]
+  (s/keys :req-un [:carocad.geojson.specs.feature/type
+                   :carocad.geojson.specs.feature/geometry]
           :opt-un [::id ::bbox ::properties]))
 
 (s/def ::feature-collection
-  (s/keys :req-un [:net.clojars.carocad.geojson.specs.feature-collection/type
-                   :net.clojars.carocad.geojson.specs.feature-collection/features]
+  (s/keys :req-un [:carocad.geojson.specs.feature-collection/type
+                   :carocad.geojson.specs.feature-collection/features]
           :opt-un [::bbox]))
 
 ;; -------------- utility functions
