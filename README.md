@@ -1,6 +1,8 @@
 # geojson.specs 
 
 [![Build Status](https://app.travis-ci.com/carocad/geojson.specs.svg?branch=master)](https://app.travis-ci.com/carocad/geojson.specs)
+[![Clojars Project](https://img.shields.io/clojars/v/net.clojars.carocad/geojson.specs.svg)](https://clojars.org/net.clojars.carocad/geojson.specs)
+[![CljDoc](https://cljdoc.org/badge/net.clojars.carocad/geojson.specs)](https://cljdoc.org/d/net.clojars.carocad/geojson.specs/)
 
 
 a Geojson utility for validating data using Clojure(script)'s spec following RFC 7946.
