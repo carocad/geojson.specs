@@ -1,12 +1,28 @@
 
+# avoids building a PR twice, once for a branch and another due to the PR status
+# see: https://github.com/travis-ci/travis-ci/issues/1147#issuecomment-160820262
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
 language: clojure
-jdk:
-  - oraclejdk8
-# check that it compiles && run linters && run tests
-# stop if any of them fails
-#script: lein do clean, compile, check, eastwood '{:exclude-namespaces [service.conjectures.specs]}', test
-script:
-  - lein clean
-  - lein compile
-  - lein check
-  - lein eastwood
+
+jobs:
+  include:
+    - stage: tests
+      name: Java tests
+      script:
+        - lein do clean, compile, check, eastwood
+        - lein trampoline test
+
+    - stage: Release
+      if: tag IS present
+      script:
+        - lein compile
+      deploy:
+        - provider: script
+          script: lein deploy clojars
+          skip_cleanup: true
+          on:
+            tags: true
