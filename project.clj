@@ -1,4 +1,4 @@
-(defproject net.clojars.carocad/geojson.specs "0.2.0"
+(defproject net.clojars.carocad/geojson.specs "0.3.0"
   :description "a Geojson spec for validating data using Clojure's spec"
   :url "https://github.com/carocad/geojson.specs"
   :license {:name "LGPL v3"
