@@ -6,6 +6,9 @@ branches:
     - master
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
+jdk:
+  - openjdk8
+
 language: clojure
 
 jobs:
