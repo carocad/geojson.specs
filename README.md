@@ -18,7 +18,7 @@ a Geojson utility for validating data using Clojure(script)'s spec following RFC
                                                                  [4 5 6]]})
 ```
 
-The `hiposfer.geojson.specs` namespace also contains some utility functions for
+The `caricad.geojson.specs` namespace also contains some utility functions for
 working with geojson. Currently, those are:
 - `bbox`: get or compute (if not available) the bounding box of a geojson object. 
   Returns `nil` if it is not possible to compute a bbox from the geojson object.
